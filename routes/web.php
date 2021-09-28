@@ -4,6 +4,7 @@ use Carbon\Factory;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Post;
 
 
 /*
@@ -28,4 +29,16 @@ Route::get('/user', function () {
     $users = User::with('addresses')->get();
     return view('user.index', compact( 'addresses', 'has', 'users'));
    //return $users[0]->address->country;
+});
+
+Route::get('/posts', function () {
+    Post::create([
+        'user_id' => 1,
+        'title' => 'post title 1'
+    ]);
+
+    Post::create([
+        'user_id' => 2,
+        'title' => 'post title 2'
+    ]);
 });
