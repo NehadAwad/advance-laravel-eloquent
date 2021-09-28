@@ -13,8 +13,9 @@
     </head>
     <body>
         <h1>Posts</h1>
-        @foreach ( as )
-            
+        @foreach ($posts as $post)
+            <h2>Post title : {{ $post->title }}</h2>
+            <h3>User name : {{ optional($post->user)->name}}</h3>
         @endforeach
     </body>
 </html>

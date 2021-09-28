@@ -32,13 +32,6 @@ Route::get('/user', function () {
 });
 
 Route::get('/posts', function () {
-    Post::create([
-        'user_id' => 1,
-        'title' => 'post title 1'
-    ]);
-
-    Post::create([
-        'user_id' => 2,
-        'title' => 'post title 2'
-    ]);
+    $posts = Post::all();
+    return view('post.index', compact('posts'));
 });
