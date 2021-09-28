@@ -12,11 +12,18 @@
 
     </head>
     <body>
-        <h1>Data</h1>
+        <h1>Has One</h1>
         @foreach ($addresses as $address)
-            <h3>address: {{ $address->user->name }} </h3>
+            <h3>Name: {{ $address->user->name }} </h3>
         @endforeach
 
+        <h1>Has many</h1>
+        @foreach ($users as $user)
+            <h3>Name: {{ $user->name}}</h3>
+            @foreach ($user->addresses as $address)   
+                <h2> address: {{ $user->address->country }}</h2>
+            @endforeach
+        @endforeach
         
     </body>
 </html>

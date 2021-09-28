@@ -22,10 +22,10 @@ Route::get('/', function () {
 });
 
 Route::get('/user', function () {
-    $users = User::all();
-    $addresses = Address::all();
-
-    //return $addresses[0]->user['name'];
-    return view('user.index', compact('users', 'addresses'));
+    //$users = User::all();
+    $addresses = Address::with('user')->get();  
+    $has = Address::with('user')->get();
+    $users = User::with('addresses')->get();
+    return view('user.index', compact( 'addresses', 'has', 'users'));
    //return $users[0]->address->country;
 });
